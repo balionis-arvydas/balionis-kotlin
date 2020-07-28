@@ -17,13 +17,16 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    testCompile 'junit:junit:4.11'
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    compile group: "org.jetbrains.kotlin", name: "kotlin-stdlib", version: "$kotlin_version"
+    compile group: "com.google.inject", name: "guice", version: "4.0"
+    compile group: "ch.qos.logback", name: "logback-classic", version: "1.1.7"
+    testCompile group: "junit", name: "junit", version: "4.11"
+    testCompile group: "org.jetbrains.kotlin", name: "kotlin-test-junit", version: "$kotlin_version"
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.8.+'
 }
 
 jar {
-    manifest { attributes 'Main-Class': 'com.balionis.kotlin1.AppKt' }
+    manifest { attributes 'Main-Class': 'com.balionis.kotlin1.MyAppKt' }
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
@@ -31,12 +34,12 @@ jar {
 task demo (type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 
-    main = 'com.balionis.kotlin1.AppKt'
+    main = 'com.balionis.kotlin1.MyAppKt'
 
     /* Need to split the space-delimited value in the exec.args */
     if (System.getProperty("exec.args") != null) {
         args System.getProperty("exec.args").split()
     } else {
-        args "myarg1", "myarg2"
+        args "--name", "myarg1", "--message", "myarg2"
     }
 }
