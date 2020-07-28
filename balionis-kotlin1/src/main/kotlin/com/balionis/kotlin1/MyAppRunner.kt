@@ -9,13 +9,13 @@ interface MyAppRunner {
 }
 
 class MyAppRunnerImpl @Inject constructor(private val service: MyService): MyAppRunner {
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(MyAppRunnerImpl::class.java)
+    }
+
     override fun run(args: MyArgs) {
         val res = service.echo(args.message)
 
         LOGGER.info("run: res={}", res)
-    }
-
-    companion object {
-        private val LOGGER = LoggerFactory.getLogger(MyAppRunnerImpl::class.java)
     }
 }

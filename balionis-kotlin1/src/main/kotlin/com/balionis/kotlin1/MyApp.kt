@@ -4,6 +4,10 @@ import com.google.inject.Guice
 import org.slf4j.LoggerFactory
 import org.slf4j.Logger
 
+object MyApp {
+    val LOGGER: Logger = LoggerFactory.getLogger(MyService::class.java)
+}
+
 fun main(args: Array<String>) {
     MyApp.LOGGER.info("main: args=${args.joinToString()}")
 
@@ -15,9 +19,5 @@ fun main(args: Array<String>) {
     runner.run(runnerArgs)
 
     MyApp.LOGGER.info("main: done")
-}
-
-object MyApp {
-    val LOGGER: Logger = LoggerFactory.getLogger(MyService::class.java)
 }
 

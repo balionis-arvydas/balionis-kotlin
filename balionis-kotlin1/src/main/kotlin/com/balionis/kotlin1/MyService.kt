@@ -9,15 +9,15 @@ interface MyService {
 }
 
 class MyServiceImpl @Inject constructor(@Named("MyServiceName")  val name:String) : MyService {
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(MyServiceImpl::class.java)
+    }
+
     override fun echo(msg: String): String {
         val res = "$name:$msg"
 
         LOGGER.info("echo={}", res)
 
         return res
-    }
-
-    companion object {
-        private val LOGGER = LoggerFactory.getLogger(MyServiceImpl::class.java)
     }
 }
