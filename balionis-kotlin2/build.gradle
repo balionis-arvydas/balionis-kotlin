@@ -1,0 +1,54 @@
+buildscript {
+    ext.kotlin_version = '1.3.72'
+    ext.spring_boot_version = '2.2.2.RELEASE'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.8.RELEASE"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-spring'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+defaultTasks 'demo'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: "org.jetbrains.kotlin", name: "kotlin-stdlib", version: "$kotlin_version"
+    compile group: "org.jetbrains.kotlin", name: "kotlin-reflect", version: "$kotlin_version"
+    compile group: "org.springframework.boot", name: "spring-boot-starter-web"
+    compile group: "ch.qos.logback", name: "logback-classic", version: "1.1.7"
+    testCompile group: "junit", name: "junit", version: "4.12"
+    testCompile group: "org.jetbrains.kotlin", name: "kotlin-test-junit", version: "$kotlin_version"
+    testCompile group: "org.springframework.boot", name: "spring-boot-starter-test"
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.8.+'
+}
+
+jar {
+    manifest { attributes 'Main-Class': 'com.balionis.kotlin2.MyAppKt' }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+// gradle demo -Dexec.args="myarg1 myarg2"
+task demo (type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+
+    main = 'com.balionis.kotlin2.MyAppKt'
+
+    /* Need to split the space-delimited value in the exec.args */
+    if (System.getProperty("exec.args") != null) {
+        args System.getProperty("exec.args").split()
+    } else {
+        args "--port", "8080"
+    }
+}
