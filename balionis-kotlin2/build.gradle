@@ -6,7 +6,11 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        /* by default, kotlin has classes not 'open'. spring, to build 'Service' proxy, needs to make them 'open',
+           including 'data class ...' */
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
+        /* running application as -jar will need dependencies. Otherwise, you will get the following exception:
+           No auto configuration classes found in META-INF/spring.factories. */
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
         classpath "io.spring.gradle:dependency-management-plugin:1.0.8.RELEASE"
     }
@@ -26,12 +30,11 @@ repositories {
 dependencies {
     compile group: "org.jetbrains.kotlin", name: "kotlin-stdlib", version: "$kotlin_version"
     compile group: "org.jetbrains.kotlin", name: "kotlin-reflect", version: "$kotlin_version"
-    compile group: "org.springframework.boot", name: "spring-boot-starter-web"
+    compile group: "org.springframework.boot", name: "spring-boot-starter-web", version: "$spring_boot_version"
     compile group: "ch.qos.logback", name: "logback-classic", version: "1.1.7"
     testCompile group: "junit", name: "junit", version: "4.12"
     testCompile group: "org.jetbrains.kotlin", name: "kotlin-test-junit", version: "$kotlin_version"
-    testCompile group: "org.springframework.boot", name: "spring-boot-starter-test"
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.8.+'
+    testCompile group: "org.springframework.boot", name: "spring-boot-starter-test", version: "$spring_boot_version"
 }
 
 jar {
@@ -39,16 +42,11 @@ jar {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
-// gradle demo -Dexec.args="myarg1 myarg2"
+// gradle demo -Dserver.port=9090 --console=plain -i
 task demo (type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 
     main = 'com.balionis.kotlin2.MyAppKt'
 
-    /* Need to split the space-delimited value in the exec.args */
-    if (System.getProperty("exec.args") != null) {
-        args System.getProperty("exec.args").split()
-    } else {
-        args "--port", "8080"
-    }
+    systemProperty "server.port", System.getProperty("server.port") ?: "9090"
 }

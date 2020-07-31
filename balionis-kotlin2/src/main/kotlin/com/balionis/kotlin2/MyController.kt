@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.concurrent.atomic.AtomicInteger
 
 @RestController
-class MyController(private val counter: AtomicInteger = AtomicInteger()) {
+open class MyController(private val counter: AtomicInteger = AtomicInteger()) {
     companion object {
         private val LOGGER = LoggerFactory.getLogger(MyController::class.java)
     }

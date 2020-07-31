@@ -4,12 +4,14 @@ The baseline is balionis-kotlin0.
 
 # Build
 ```
-gradle clean test jar
+gradle clean test build
 ```
 
 # Run
 ```
-gradle demo -Dexec.args="--port 8080"
+gradle demo -Dserver.port=9090 --console=plain -i
+or
+java -Dserver.port=9090 -jar build/libs/balionis-kotlin2.jar
 ```
 
 # Test

@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-class MyApp {
+open class MyApp {
     companion object {
         val LOGGER: Logger = LoggerFactory.getLogger(MyApp::class.java)
     }
