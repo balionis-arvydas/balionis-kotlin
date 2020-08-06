@@ -7,3 +7,7 @@ This set of packages is meant to provide me with the prototype of build, test, p
 0. balionis-kotlin0        - 'plain' prototype project using gradle.
 
 1. balionis-kotlin1        - guice + lockback + mockito prototype project using balionis-kotlin0 baseline.
+
+2. balionis-kotlin2        - spring restful + lockback prototype project using balionis-kotlin0 baseline.
+
+3. balionis-kotlin3        - aws lambda prototype project using balionis-kotlin0 baseline.
