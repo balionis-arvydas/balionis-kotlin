@@ -1,0 +1,42 @@
+buildscript {
+    ext.kotlin_version = '1.3.72'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+
+defaultTasks 'run'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testCompile 'junit:junit:4.11'
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+}
+
+jar {
+    manifest { attributes 'Main-Class': 'com.balionis.kotlin4.AppKt' }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+// gradle demo -Dexec.args="myarg1 myarg2"
+task demo (type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+
+    main = 'com.balionis.kotlin4.AppKt'
+
+    /* Need to split the space-delimited value in the exec.args */
+    if (System.getProperty("exec.args") != null) {
+        args System.getProperty("exec.args").split()
+    } else {
+        args "myarg1", "myarg2"
+    }
+}
