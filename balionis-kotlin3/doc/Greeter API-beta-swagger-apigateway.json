@@ -1,0 +1,71 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "An API which greets",
+    "version": "2020-08-06T10:07:45Z",
+    "title": "Greeter API"
+  },
+  "host": "p9jw6t2jb6.execute-api.eu-west-2.amazonaws.com",
+  "basePath": "/beta",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/greeter": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "GreetingInput",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GreetingInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        },
+        "x-amazon-apigateway-request-validator": "Validate body",
+        "x-amazon-apigateway-integration": {
+          "uri": "arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:613877803204:function:greeter/invocations",
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST",
+          "contentHandling": "CONVERT_TO_TEXT",
+          "type": "aws"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Empty": {
+      "type": "object",
+      "title": "Empty Schema"
+    },
+    "GreetingInput": {
+      "type": "string"
+    }
+  },
+  "x-amazon-apigateway-request-validators": {
+    "Validate body": {
+      "validateRequestParameters": false,
+      "validateRequestBody": true
+    }
+  }
+}

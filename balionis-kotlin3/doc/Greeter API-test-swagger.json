@@ -1,0 +1,64 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "An API which greets",
+    "version": "2020-08-06T12:16:07Z",
+    "title": "Greeter API"
+  },
+  "host": "p9jw6t2jb6.execute-api.eu-west-2.amazonaws.com",
+  "basePath": "/test",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/greeter": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "GreetingInput",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GreetingInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "x-api-key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Empty": {
+      "type": "object",
+      "title": "Empty Schema"
+    },
+    "GreetingInput": {
+      "type": "string"
+    }
+  }
+}
