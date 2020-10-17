@@ -6,19 +6,11 @@ import org.junit.Test
 class AppTest {
     @Test
     fun testMe() {
-        val res = App.echo(listOf("test"))
-        assertEquals("echo:test", res)
-    }
+        val req = """{"payload":{"args":["arg1","arg2"]}}"""
 
-    @Test
-    fun testMe2() {
-        val res = App.echo(listOf("test1", "test2"))
-        assertEquals("echo:test1", res)
-    }
+        val expected = """{"payload":{"message":"echo:arg1"}}"""
+        val actual = App.echo(req)
 
-    @Test
-    fun testDefault() {
-        val res = App.echo(listOf())
-        assertEquals("echo:default", res)
+        assertEquals(expected, actual)
     }
 }

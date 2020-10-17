@@ -3,12 +3,12 @@ It's a 'plain' kotlin prototype project using gradle.
 
 # Build
 ```
-gradle clean test jar
+gradle clean test build
 ```
 
 # Run
 ```
-gradle demo -Dmyvariable=myvalue -Dexec.args="myarg1 myarg2"
+gradle run --args="myarg1 myarg2"
 ```
 
 # Test

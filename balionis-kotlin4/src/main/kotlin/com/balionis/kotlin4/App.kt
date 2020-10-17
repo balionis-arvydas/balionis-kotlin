@@ -1,18 +1,53 @@
 package com.balionis.kotlin4
 
+import mu.KotlinLogging
+
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+
+private fun <T> Class<T>.jsonAdapter(): JsonAdapter<T> = Moshi.Builder().build().adapter(this)
+    ?: throw IllegalStateException("Failed to initialize Moshi adapter for $this")
+
+private val logger = KotlinLogging.logger {}
+
+private val requestAdapter = MyRequest::class.java.jsonAdapter()
+private val responseAdapter = MyResponse::class.java.jsonAdapter()
+
 object App {
-    fun echo(args: List<String>): String {
-        val msg = args.getOrElse(0) { "default" }
-        return "echo:${msg}"
+
+    fun echo(reqJson: String): String {
+        logger.debug { "echo: reqJson=${reqJson}" }
+
+        val req = requestAdapter.fromJson(reqJson)
+
+        val arg1 = req?.payload?.args?.getOrElse(0) { "default" }
+
+        val res = MyResponse(MyResponsePayload("echo:$arg1"))
+
+        val resJson = responseAdapter.toJson(res)
+
+        logger.debug { "echo: resJson=${resJson}" }
+
+        return resJson
     }
 }
 
 fun main(args: Array<String>) {
-    println("main: args=${args.joinToString()}")
 
-    val msg = App.echo(args.asList())
+    logger.debug { "main: args=${args.joinToString()}" }
 
-    println("main: msg=${msg}")
+    val req = MyRequest(MyRequestPayload(args.asList()))
 
-    println("main: done")
+    val reqJson = requestAdapter.toJson(req)
+
+    logger.debug { "main: reqJson=${reqJson}" }
+
+    val resJson = App.echo(reqJson)
+
+    logger.debug { "main: resJson=${resJson}" }
+
+    val res = responseAdapter.fromJson(resJson)
+
+    logger.debug { "main: msg=${res?.payload?.message}" }
+
 }
