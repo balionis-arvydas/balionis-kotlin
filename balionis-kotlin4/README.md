@@ -1,5 +1,5 @@
 # Why?
-It's a 'plain' kotlin prototype project using gradle.
+It's a kotlin prototype using gradle kotlin plugin, mochi json parser and logback.
 
 # Build
 ```

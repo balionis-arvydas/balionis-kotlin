@@ -13,3 +13,5 @@ This set of packages is meant to provide me with the prototype of build, test, p
 3. balionis-kotlin3        - aws lambda prototype project using balionis-kotlin0 baseline.
 
 4. balionis-kotlin4        - gradle with kotlin plugin (sanity check if DNB infra is crazy...).
+
+5. balionis-kotlin5        - activiti prototype using balionis-kotlin4 as baseline.
