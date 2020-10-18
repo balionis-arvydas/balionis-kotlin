@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="sample2" name="sample2" isExecutable="true">
+    <startEvent id="start" name="Start" activiti:initiator="initiator"/>
+    <userTask id="enterData" name="Enter Data" activiti:assignee="${initiator}" activiti:candidateGroups="managers">
+      <extensionElements>
+        <activiti:formProperty id="correlationId" name="Correlation ID" type="string" required="true"/>
+      </extensionElements>
+    </userTask>
+    <userTask id="reviewData" name="Review Data" activiti:assignee="${initiator}" activiti:candidateGroups="managers">
+      <extensionElements>
+        <activiti:formProperty id="reviewStatus" name="Review Status" type="long" required="true"/>
+      </extensionElements>
+    </userTask>
+    <exclusiveGateway id="decision" name="Approved?" default="enterData"/>
+    <scriptTask id="generateData" name="Generate Data" scriptFormat="javascript" activiti:autoStoreVariables="false">
+      <script><![CDATA[var dateAsString = new Date().toString(); execution.setVariable("generateTime", dateAsString);]]></script>
+    </scriptTask>
+    <endEvent id="end" name="End"/>
+    <sequenceFlow id="sid-01" sourceRef="start" targetRef="enterData"/>
+    <sequenceFlow id="sid-02" sourceRef="enterData" targetRef="reviewData"/>
+    <sequenceFlow id="sid-03" sourceRef="reviewData" targetRef="decision"/>
+    <sequenceFlow id="sid-04" name="&gt;1" sourceRef="decision" targetRef="generateData">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${reviewStatus > 1}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-05" name="=1" sourceRef="decision" targetRef="end">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${reviewStatus == 1}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-06" sourceRef="decision" targetRef="enterData"/>
+    <sequenceFlow id="sid-07" sourceRef="generateData" targetRef="end"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_sample2">
+    <bpmndi:BPMNPlane bpmnElement="sample2" id="BPMNPlane_sample2">
+      <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
+        <omgdc:Bounds height="30.0" width="30.0" x="11.0" y="147.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="enterData" id="BPMNShape_enterData">
+        <omgdc:Bounds height="80.0" width="100.0" x="81.0" y="122.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="reviewData" id="BPMNShape_reviewData">
+        <omgdc:Bounds height="80.0" width="100.0" x="233.0" y="122.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="decision" id="BPMNShape_decision">
+        <omgdc:Bounds height="40.0" width="40.0" x="388.0" y="142.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="generateData" id="BPMNShape_generateData">
+        <omgdc:Bounds height="80.0" width="100.0" x="470.0" y="122.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end" id="BPMNShape_end">
+        <omgdc:Bounds height="28.0" width="28.0" x="610.0" y="148.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-01" id="BPMNEdge_sid-01">
+        <omgdi:waypoint x="41.0" y="162.0"/>
+        <omgdi:waypoint x="82.0" y="162.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-02" id="BPMNEdge_sid-02">
+        <omgdi:waypoint x="182.0" y="162.0"/>
+        <omgdi:waypoint x="234.0" y="162.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-03" id="BPMNEdge_sid-03">
+        <omgdi:waypoint x="334.0" y="162.0"/>
+        <omgdi:waypoint x="392.0" y="162.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-04" id="BPMNEdge_sid-04">
+        <omgdi:waypoint x="424.0" y="162.0"/>
+        <omgdi:waypoint x="470.0" y="162.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-05" id="BPMNEdge_sid-05">
+        <omgdi:waypoint x="408.0" y="144.0"/>
+        <omgdi:waypoint x="408.0" y="94.0"/>
+        <omgdi:waypoint x="624.0" y="94.0"/>
+        <omgdi:waypoint x="624.0" y="150.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-06" id="BPMNEdge_sid-06">
+        <omgdi:waypoint x="408.0" y="180.0"/>
+        <omgdi:waypoint x="408.0" y="234.0"/>
+        <omgdi:waypoint x="134.0" y="234.0"/>
+        <omgdi:waypoint x="134.0" y="202.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-07" id="BPMNEdge_sid-07">
+        <omgdi:waypoint x="570.0" y="162.0"/>
+        <omgdi:waypoint x="612.0" y="162.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
