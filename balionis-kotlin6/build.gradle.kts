@@ -2,6 +2,10 @@ plugins {
     application
     kotlin("jvm") version "1.4.10"
     kotlin("kapt") version "1.4.10"
+    id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("com.palantir.docker") version "0.25.0"
+    id("com.palantir.docker-compose") version "0.25.0"
+//    id("com.palantir.docker-run") version "0.25.0"
 }
 
 repositories {
@@ -11,6 +15,9 @@ repositories {
 apply {
     plugin("kotlin")
     plugin("kotlin-kapt")
+    plugin("com.palantir.docker")
+    plugin("com.palantir.docker-compose")
+//    plugin("com.palantir.docker-run")
 }
 
 dependencies {
@@ -29,5 +36,12 @@ dependencies {
 }
 
 application {
-    mainClassName = "com.balionis.kotlin4.AppKt"
+    mainClassName = "com.balionis.kotlin6.AppKt"
+}
+
+docker {
+    dependsOn(tasks["shadowJar"])
+
+    name = project.name
+    files(tasks["shadowJar"].outputs)
 }
