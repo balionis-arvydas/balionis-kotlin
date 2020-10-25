@@ -70,8 +70,8 @@ class App {
     }
 
     fun run(args: List<String>) {
-        val kafkaBrokerUri = args.getOrElse(0) { Constants.DefaultKafkaBrokerUri }
-        val restarts = args.getOrElse(1) { Constants.DefaultKafkaRestarts }.toInt()
+        val kafkaBrokerUri = System.getenv(Constants.KafkaBrokerUri) ?: Constants.DefaultKafkaBrokerUri
+        val restarts = args.getOrElse(0) { Constants.DefaultKafkaRestarts }.toInt()
         val props = buildProperties(kafkaBrokerUri)
         val topology = buildTopology()
 

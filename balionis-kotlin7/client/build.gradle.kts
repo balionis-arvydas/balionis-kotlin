@@ -38,3 +38,6 @@ application {
     mainClassName = "com.balionis.kotlin7.client.AppKt"
 }
 
+shadow {
+    applicationDistribution.from("src/main/resources")
+}

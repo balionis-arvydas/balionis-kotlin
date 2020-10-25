@@ -4,10 +4,9 @@
             <pattern>%d[HH:mm:ss.SSS] [%thread] %-5level %logger(36) - %msg%n</pattern>
         </encoder>
     </adapter>
-    <logger name="no.dnb.arvydas" level="debug" additivity="false">
-        <appender-ref ref="CONSOLE"/>
-    </logger>
-    <root level="ERROR">
+    <logger name="org.apache.kafka" level="warn"/>
+    <logger name="org.apache.kafka.common.metrics" level="warn"/>
+    <root level="debug">
         <adapter-ref ref="STDOUT"/>
     </root>
 </configuration>

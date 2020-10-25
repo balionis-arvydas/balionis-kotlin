@@ -4,7 +4,9 @@
             <pattern>%d[HH:mm:ss.SSS] [%thread] %-5level %logger(36) - %msg%n</pattern>
         </encoder>
     </adapter>
-    <root level="INFO">
+    <logger name="org.apache.kafka" level="WARN"/>
+    <logger name="org.apache.kafka.common.metrics" level="WARN"/>
+    <root level="DEBUG">
         <adapter-ref ref="STDOUT"/>
     </root>
 </configuration>

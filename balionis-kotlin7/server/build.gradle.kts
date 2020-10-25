@@ -40,6 +40,10 @@ application {
     mainClassName = "com.balionis.kotlin7.server.AppKt"
 }
 
+shadow {
+    applicationDistribution.from("src/main/resources")
+}
+
 docker {
     dependsOn(tasks["shadowJar"])
 
