@@ -1,4 +1,4 @@
-package com.balionis.kotlin7
+package com.balionis.kotlin7.server
 
 import kotlin.test.assertTrue
 import org.junit.Test

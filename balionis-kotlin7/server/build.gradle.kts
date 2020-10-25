@@ -37,7 +37,7 @@ dependencies {
 }
 
 application {
-    mainClassName = "com.balionis.kotlin7.AppKt"
+    mainClassName = "com.balionis.kotlin7.server.AppKt"
 }
 
 docker {

@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "balionis-kotlin7"
+rootProject.name = "balionis-kotlin7-server"

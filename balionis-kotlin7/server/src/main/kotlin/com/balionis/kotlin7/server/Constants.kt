@@ -1,4 +1,4 @@
-package com.balionis.kotlin7
+package com.balionis.kotlin7.server
 
 object Constants {
     const val ApplicationId = "balionis-kotlin7"
