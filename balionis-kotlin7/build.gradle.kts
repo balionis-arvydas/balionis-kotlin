@@ -27,6 +27,8 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging:1.11.5")
     implementation("ch.qos.logback:logback-classic:1.2.3")
 
+    implementation("org.apache.kafka:kafka-streams:2.6.0")
+    implementation("org.apache.kafka:kafka-clients:2.6.0")
 
     testImplementation("junit:junit:4.11")
     testImplementation(kotlin("test-junit"))

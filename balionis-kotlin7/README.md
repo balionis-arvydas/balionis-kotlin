@@ -5,6 +5,7 @@ It's a kotlin __kafka__ prototype using balionis-kotlin6 (docker plugin) as base
 
 ```
 $ ./gradlew clean build docker
+$ ./gradlew generateDockerCompose
 $ ./gradlew dockerComposeUp
 ```
 
@@ -12,6 +13,7 @@ $ ./gradlew dockerComposeUp
 
 ```
 $ docker exec -it 22e52d6ffec4 bash
+$ ls /kafka/kafka-logs
 ```
 
 ## Clean
