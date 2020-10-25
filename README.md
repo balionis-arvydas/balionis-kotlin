@@ -15,3 +15,5 @@ This set of packages is meant to provide me with the prototype of build, test, p
 4. balionis-kotlin4        - gradle with kotlin plugin (sanity check if DNB infra is crazy...).
 
 5. balionis-kotlin5        - activiti prototype using balionis-kotlin4 as baseline.
+
+6. balionis-kotlin6        - gradle docker plugin using balionis-kotlin4 baseline.
