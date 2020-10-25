@@ -21,7 +21,7 @@ services:
     depends_on:
       - zookeeper
   myapp:
-    image: balionis-kotlin7:latest
+    image: balionis-kotlin7-server:latest
     environment:
       KAFKA_BROKER: "kafka:19092"
     depends_on:
