@@ -4,7 +4,10 @@
             <pattern>%d[HH:mm:ss.SSS] [%thread] %-5level %logger(36) - %msg%n</pattern>
         </encoder>
     </adapter>
-    <root level="INFO">
+    <logger name="no.dnb.arvydas" level="debug" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <root level="ERROR">
         <adapter-ref ref="STDOUT"/>
     </root>
 </configuration>

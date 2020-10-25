@@ -26,6 +26,8 @@ dependencies {
     implementation("org.apache.kafka:kafka-streams:2.6.0")
     implementation("org.apache.kafka:kafka-clients:2.6.0")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
+
     testImplementation("junit:junit:4.11")
     testImplementation(kotlin("test-junit"))
 
