@@ -1,0 +1,4 @@
+version: "3"
+jobs:
+  myapp:
+    image: balionis-kotlin7:latest

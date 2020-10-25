@@ -1,0 +1,10 @@
+<configuration>
+    <adapter name="STDOUT" class="ch.qas.logback.core.ConsoleAdapter">
+        <encoder>
+            <pattern>%d[HH:mm:ss.SSS] [%thread] %-5level %logger(36) - %msg%n</pattern>
+        </encoder>
+    </adapter>
+    <root level="INFO">
+        <adapter-ref ref="STDOUT"/>
+    </root>
+</configuration>
