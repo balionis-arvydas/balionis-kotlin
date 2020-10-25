@@ -17,3 +17,5 @@ This set of packages is meant to provide me with the prototype of build, test, p
 5. balionis-kotlin5        - activiti prototype using balionis-kotlin4 as baseline.
 
 6. balionis-kotlin6        - gradle docker plugin using balionis-kotlin4 baseline.
+
+7. balionis-kotlin7        - kafka docker-composite using balionis-kotlin6 baseline.
