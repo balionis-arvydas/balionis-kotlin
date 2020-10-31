@@ -8,6 +8,15 @@ gradle clean test build
 
 # Run
 ```
-gradle run --args="myarg1 myarg2"
+$ ./gradlew server:run --args="myarg1 myarg2"
+...
+> Task :server:run
+22:40:41.283 [main] DEBUG com.balionis.kotlin8.server.App - main: args=myarg1, myarg2
+22:40:41.287 [main] DEBUG com.balionis.kotlin8.server.App - main: reqJson={"payload":{"args":["myarg1","myarg2"]}}
+22:40:41.288 [main] DEBUG com.balionis.kotlin8.server.App - echo: reqJson={"payload":{"args":["myarg1","myarg2"]}}
+22:40:41.299 [main] DEBUG com.balionis.kotlin8.server.App - echo: resJson={"payload":{"message":"echo:myarg1"}}
+22:40:41.300 [main] DEBUG com.balionis.kotlin8.server.App - main: resJson={"payload":{"message":"echo:myarg1"}}
+22:40:41.300 [main] DEBUG com.balionis.kotlin8.server.App - main: msg=echo:myarg1
+...
 ```
 

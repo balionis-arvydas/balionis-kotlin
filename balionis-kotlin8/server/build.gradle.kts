@@ -1,3 +1,6 @@
+plugins {
+    application
+}
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
@@ -11,4 +14,8 @@ dependencies {
 
     testImplementation("junit:junit:4.11")
     testImplementation(kotlin("test-junit"))
+}
+
+application {
+    mainClassName = "com.balionis.kotlin8.server.AppKt"
 }
