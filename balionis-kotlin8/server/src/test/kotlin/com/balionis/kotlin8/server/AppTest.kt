@@ -1,4 +1,4 @@
-package com.balionis.kotlin8
+package com.balionis.kotlin8.server
 
 import kotlin.test.assertEquals
 import org.junit.Test

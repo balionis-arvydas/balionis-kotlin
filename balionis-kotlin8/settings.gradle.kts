@@ -1,8 +1,5 @@
-pluginManagement {
-    repositories {
-        maven("https://plugins.gradle.org/m2/")
-        mavenCentral()
-    }
-}
-
 rootProject.name = "balionis-kotlin8"
+
+include("client")
+include("server")
+

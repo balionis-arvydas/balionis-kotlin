@@ -1,4 +1,4 @@
-package com.balionis.kotlin8
+package com.balionis.kotlin8.client
 
 import com.squareup.moshi.JsonClass
 

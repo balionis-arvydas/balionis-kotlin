@@ -2,3 +2,5 @@
 .idea
 build
 out
+client/build
+server/build

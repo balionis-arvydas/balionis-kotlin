@@ -1,12 +1,12 @@
-package com.balionis.kotlin8
+package com.balionis.kotlin8.server
 
 import mu.KotlinLogging
 
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-
-private fun <T> Class<T>.jsonAdapter(): JsonAdapter<T> = Moshi.Builder().build().adapter(this)
-    ?: throw IllegalStateException("Failed to initialize Moshi adapter for $this")
+import com.balionis.kotlin8.client.MyRequest
+import com.balionis.kotlin8.client.MyRequestPayload
+import com.balionis.kotlin8.client.MyResponse
+import com.balionis.kotlin8.client.MyResponsePayload
+import com.balionis.kotlin8.client.MoshiExtensions.jsonAdapter
 
 private val logger = KotlinLogging.logger {}
 
