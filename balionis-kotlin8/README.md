@@ -21,6 +21,6 @@ $ ./gradlew server:run --args="myarg1 myarg2"
 ```
 
 ```
-$ java -Dlogback.configurationFile=server/src/main/resources/lockback.xml \
+$ java -Dlogback.configurationFile=server/src/test/resources/logback-test.xml \
     -jar server/build/libs/balionis-kotlin8-server-all.jar
 ```

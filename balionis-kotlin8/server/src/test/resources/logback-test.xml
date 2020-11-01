@@ -5,7 +5,7 @@
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
-    <logger name="com.balionis.kotlin8" level="debug" additivity="false">
+    <logger name="com.balionis.kotlin8" level="info" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
     <root level="warn">
