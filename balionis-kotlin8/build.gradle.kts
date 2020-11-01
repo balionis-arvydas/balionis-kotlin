@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 allprojects {
     repositories {
         mavenCentral()
@@ -18,6 +20,10 @@ subprojects {
 
     if (kotlinProjects.contains(this.project.name)) {
         apply(plugin = "kotlin-kapt")
-    }    
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = "11"
+    }
 }
 

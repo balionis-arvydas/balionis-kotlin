@@ -1,6 +1,8 @@
 plugins {
-    application
+    id("application")
+    id("com.github.johnrengelman.shadow") version "6.1.0"
 }
+
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
@@ -16,6 +18,13 @@ dependencies {
     testImplementation(kotlin("test-junit"))
 }
 
+tasks.withType<AbstractArchiveTask> {
+    archiveBaseName.set(rootProject.name + "-server")
+}
+
 application {
     mainClassName = "com.balionis.kotlin8.server.AppKt"
+
+    applicationDistribution.exclude("**/logback.xml")
+
 }

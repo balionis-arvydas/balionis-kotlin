@@ -8,7 +8,7 @@ gradle clean test build
 
 # Run
 ```
-$ ./gradlew server:run --args="myarg1 myarg2"
+$ ./gradlew server:run --args="myarg1 myarg2" 
 ...
 > Task :server:run
 22:40:41.283 [main] DEBUG com.balionis.kotlin8.server.App - main: args=myarg1, myarg2
@@ -20,3 +20,7 @@ $ ./gradlew server:run --args="myarg1 myarg2"
 ...
 ```
 
+```
+$ java -Dlogback.configurationFile=server/src/main/resources/lockback.xml \
+    -jar server/build/libs/balionis-kotlin8-server-all.jar
+```
