@@ -34,7 +34,7 @@ object App {
 
 fun main(args: Array<String>) {
 
-    logger.debug { "main: args=${args.joinToString()}" }
+    logger.info { "main: args=${args.joinToString()}" }
 
     val req = MyRequest(MyRequestPayload(args.asList()))
 
@@ -48,6 +48,6 @@ fun main(args: Array<String>) {
 
     val res = responseAdapter.fromJson(resJson)
 
-    logger.debug { "main: msg=${res?.payload?.message}" }
+    logger.info { "main: done. msg=${res?.payload?.message}" }
 
 }

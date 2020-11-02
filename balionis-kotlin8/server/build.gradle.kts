@@ -28,13 +28,13 @@ application {
     mainClassName = "com.balionis.kotlin8.server.AppKt"
 
     // FIXME: this does not work!
-    applicationDistribution.exclude("**/logback.xml")
+    applicationDistribution.exclude("**/logback*.xml")
 
 }
 
 tasks.withType<ShadowJar> {
     mergeServiceFiles {
         // FIXME: this does not work!
-        exclude("**/logback.xml")
+        exclude("**/logback*.xml")
     }
 }

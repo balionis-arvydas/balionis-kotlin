@@ -21,6 +21,9 @@ $ ./gradlew server:run --args="myarg1 myarg2"
 ```
 
 ```
-$ java -Dlogback.configurationFile=server/src/test/resources/logback-test.xml \
-    -jar server/build/libs/balionis-kotlin8-server-all.jar
+$ java -Dlogback.configurationFile=logback-sample.xml \
+       -jar server/build/libs/balionis-kotlin8-server-all.jar myarg1 myarg2
+...
+07:34:53.956 [main] INFO  com.balionis.kotlin8.server.App - main: args=myarg1, myarg2
+07:34:53.973 [main] INFO  com.balionis.kotlin8.server.App - main: done. msg=echo:myarg1
 ```
