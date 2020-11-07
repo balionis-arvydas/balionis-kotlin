@@ -1,13 +1,9 @@
-# Why?
-It's a kotlin activiti v7 engine-connector-bundle package using balionis-kotlin8 as baseline.
+This is kotlin spring boot sandbox created by https://spring.io/guides/tutorials/spring-boot-kotlin/
 
-# Build
+# Build 
 ```
-gradle clean build docker
-gradle clean build dockerComposeUp
+$ ./gradlew clean build
 ```
+# Run 
 
 # Test
-
-TODO
-
