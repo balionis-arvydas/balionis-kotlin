@@ -21,3 +21,5 @@ This set of packages is meant to provide me with the prototype of build, test, p
 7. balionis-kotlin7        - kafka docker-composite using balionis-kotlin6 baseline.
 
 8. balionis-kotlin8        - gradle child=parent prototype using balionis-kotlin4 baseline.
+
+9. balionis-kotlin9        - gradle docker spring boot prototype.
