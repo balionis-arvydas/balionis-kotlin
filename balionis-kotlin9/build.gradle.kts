@@ -9,8 +9,8 @@ plugins {
 	id("com.palantir.docker-compose") version "0.25.0"
 }
 
-group = "com.balionis"
-version = "0.0.1-SNAPSHOT"
+// group = "com.balionis"
+// version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -45,4 +45,8 @@ tasks.withType<KotlinCompile> {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "11"
 	}
+}
+
+docker {
+	name = this.project.name
 }
