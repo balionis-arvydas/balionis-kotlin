@@ -13,6 +13,6 @@ class MyController {
     fun findAll() : List<String> = listOf<String>()
 
     @GetMapping("/{id}")
-    fun findOne(@PathVariable id: String): String = id
+    fun findOne(@PathVariable id: String): String = "{ \"payload\": \"$id\" }"
 
 }
