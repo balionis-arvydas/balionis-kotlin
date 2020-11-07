@@ -49,4 +49,5 @@ tasks.withType<KotlinCompile> {
 
 docker {
 	name = this.project.name
+	copySpec.from("build/libs")
 }
