@@ -1,0 +1,6 @@
+version: "3"
+services:
+  myapp:
+    image: balionis-kotlin10:latest
+    ports:
+      - "8080:8080"

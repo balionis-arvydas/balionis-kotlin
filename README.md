@@ -23,3 +23,5 @@ This set of packages is meant to provide me with the prototype of build, test, p
 8. balionis-kotlin8        - gradle child=parent prototype using balionis-kotlin4 baseline.
 
 9. balionis-kotlin9        - gradle docker spring boot prototype.
+
+10. balionis-kotlin10      - camunda spring docker prototype using balionis-kotlin9 baseline.
