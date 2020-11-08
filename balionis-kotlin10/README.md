@@ -17,9 +17,9 @@ $ ./gradlew dockerComposeUp
 ```
 $ chrome http://localhost:8080/camunda-web/app/
 username: demo
-password: demo
+password: 1234
 ``` 
 
 ```
-$ curl http://localhost:8080/camunda/rest-api/process-definition
+$ curl http://localhost:8080/camunda-api/process-definition
 ```

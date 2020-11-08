@@ -1,7 +1,7 @@
 camunda.bpm:
   admin-user:
     id: demo
-    password: 123
+    password: 1234
   webapp:
     application-path: camunda-web
   history-level: full
