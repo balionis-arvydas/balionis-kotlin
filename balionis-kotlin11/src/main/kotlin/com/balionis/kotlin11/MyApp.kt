@@ -1,14 +1,15 @@
 package com.balionis.kotlin11
 
+import mu.KotlinLogging
+import org.activiti.spring.boot.SecurityAutoConfiguration
 import org.springframework.boot.Banner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
-import mu.KotlinLogging
-
 private val logger = KotlinLogging.logger {}
 
-@SpringBootApplication
+// @SpringBootApplication(exclude = SecurityAutoConfiguration::class.java.also { exclude = it })
+@SpringBootApplication(exclude=[SecurityAutoConfiguration::class])
 class MyApp
 
 fun main(args: Array<String>) {

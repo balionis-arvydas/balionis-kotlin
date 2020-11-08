@@ -25,7 +25,6 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-security")
-	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.security:spring-security-test")
 
 	implementation("io.github.microutils:kotlin-logging:1.11.5")
@@ -48,10 +47,6 @@ dependencies {
 	implementation("org.activiti:activiti-spring-boot-starter-security:5.23.0")
 
 	implementation("com.h2database:h2:1.4.200")
-//	implementation("com.sun.activation:javax.activation:1.2.0")
-//	implementation("javax.xml.bind:jaxb-api:2.3.0")
-//	implementation("com.sun.xml.bind:jaxb-core:2.3.0")
-//	implementation("com.sun.xml.bind:jaxb-impl:2.3.0")
 
 }
 

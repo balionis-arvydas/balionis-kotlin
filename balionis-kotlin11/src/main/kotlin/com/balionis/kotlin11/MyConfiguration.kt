@@ -14,6 +14,8 @@ class MyConfiguration {
     fun usersAndGroupsInitializer(identityService: IdentityService): InitializingBean? {
         return InitializingBean {
             val group: Group = identityService.newGroup("user").apply {
+//                name = "ROLE_USER"
+//                type = "USER"
                 name = "users"
                 type = "security-role"
             }
