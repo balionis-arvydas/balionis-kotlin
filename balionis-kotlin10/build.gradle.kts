@@ -34,6 +34,17 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api")
 	testImplementation("com.ninja-squad:springmockk:1.1.3")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
+	implementation("org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter:7.14.0")
+	implementation("org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter-rest:7.14.0")
+	implementation("org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter-webapp:7.14.0")
+
+	implementation("com.h2database:h2")
+	implementation("com.sun.activation:javax.activation:1.2.0")
+	implementation("javax.xml.bind:jaxb-api:2.3.0")
+	implementation("com.sun.xml.bind:jaxb-core:2.3.0")
+	implementation("com.sun.xml.bind:jaxb-impl:2.3.0")
+
 }
 
 tasks.withType<Test> {

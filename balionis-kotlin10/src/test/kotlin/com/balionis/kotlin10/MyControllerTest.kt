@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 class MyControllerTest(@Autowired val mockMvc: MockMvc) {
     @Test
     fun `find all`() {
-        mockMvc.perform(get("/api/").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/api/records").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk)
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("\$.*", hasSize<List<String>>(0)))
@@ -22,7 +22,7 @@ class MyControllerTest(@Autowired val mockMvc: MockMvc) {
 
     @Test
     fun `find 123`() {
-        mockMvc.perform(get("/api/123").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/api/records/123").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk)
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("\$.payload").value("123"))

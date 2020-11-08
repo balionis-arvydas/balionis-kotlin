@@ -1,0 +1,7 @@
+camunda:
+  bpm:
+    admin-user:
+      id: demo
+      password: 123
+#    webapp:
+#      application-path: /camunda/web

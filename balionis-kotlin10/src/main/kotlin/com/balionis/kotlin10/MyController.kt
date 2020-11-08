@@ -12,14 +12,14 @@ private val logger = KotlinLogging.logger {}
 @RequestMapping("/api")
 class MyController {
 
-    @GetMapping("/")
+    @GetMapping("/records")
     fun findAll() : List<String> {
         logger.debug { "findAll:+" }
 
         return listOf<String>()
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/records/{id}")
     fun findOne(@PathVariable id: String): String {
         logger.debug { "findOne: id=$id" }
 
