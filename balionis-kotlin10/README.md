@@ -15,12 +15,11 @@ $ ./gradlew dockerComposeUp
 # Test
 
 ```
-$ chrome http://localhost:8080/camunda/app/
+$ chrome http://localhost:8080/camunda-web/app/
 username: demo
 password: demo
 ``` 
 
 ```
-$ curl http://localhost:8080/camunda/api/engine/engine/default/process-definition 
-// Cookie: JSESSIONID=70DB1A18418DED507673157D1A50FDBE 
+$ curl http://localhost:8080/camunda/rest-api/process-definition
 ```
