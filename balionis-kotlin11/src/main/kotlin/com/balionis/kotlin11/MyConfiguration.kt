@@ -14,16 +14,15 @@ class MyConfiguration {
     fun usersAndGroupsInitializer(identityService: IdentityService): InitializingBean? {
         return InitializingBean {
             val group: Group = identityService.newGroup("user").apply {
-//                name = "ROLE_USER"
-//                type = "USER"
-                name = "users"
-                type = "security-role"
+                name = "ROLE_USER"
+                type = "USER"
             }
             identityService.saveGroup(group)
-            val admin: User = identityService.newUser("admin").apply {
-                password = "admin"
+            val test: User = identityService.newUser("test").apply {
+                password = "1234"
             }
-            identityService.saveUser(admin)
+            identityService.saveUser(test)
+            identityService.createMembership(test.id, group.id);
         }
     }
 }

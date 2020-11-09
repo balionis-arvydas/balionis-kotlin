@@ -39,7 +39,11 @@ dependencies {
 	testImplementation("com.ninja-squad:springmockk:1.1.3")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
-	implementation("org.activiti:activiti-engine:5.23.0")
+	implementation("org.activiti:activiti-engine:5.23.0") {
+		exclude(group = "org.mybatis", module = "mybatis")
+	}
+	implementation("org.mybatis:mybatis:3.5.6")
+
 	implementation("org.activiti:activiti-spring-boot-starter-basic:5.23.0")
 	implementation("org.activiti:activiti-spring-boot-starter-rest-api:5.23.0") {
 		exclude(module = "jgraphx")

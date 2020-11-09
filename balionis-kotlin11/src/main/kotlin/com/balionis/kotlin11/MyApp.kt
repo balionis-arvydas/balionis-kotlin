@@ -8,8 +8,7 @@ import org.springframework.boot.runApplication
 
 private val logger = KotlinLogging.logger {}
 
-// @SpringBootApplication(exclude = SecurityAutoConfiguration::class.java.also { exclude = it })
-@SpringBootApplication(exclude=[SecurityAutoConfiguration::class])
+@SpringBootApplication(exclude = [SecurityAutoConfiguration::class])
 class MyApp
 
 fun main(args: Array<String>) {
