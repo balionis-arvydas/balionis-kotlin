@@ -25,3 +25,8 @@ This set of packages is meant to provide me with the prototype of build, test, p
 9. balionis-kotlin9        - gradle docker spring boot prototype.
 
 10. balionis-kotlin10      - camunda spring docker prototype using balionis-kotlin9 baseline.
+
+11. balionis-kotlin11      - activiti5 spring docker prototype using balionis-kotlin10 baseline.
+
+12. balionis-kotlin12      - activiti7 bundle docker prototype.
+
