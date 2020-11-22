@@ -3,4 +3,4 @@ services:
   myapp:
     image: balionis-kotlin13-engine:latest
     ports:
-      - "8080:8080"
+      - "8180:8080"

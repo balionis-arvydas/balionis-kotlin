@@ -2,7 +2,7 @@ FROM openjdk:12-jdk-alpine
 
 WORKDIR /app
 
-COPY balionis-kotlin13-engine.jar ./myapp.jar
+COPY engine.jar ./myapp.jar
 
 EXPOSE 8080
 
