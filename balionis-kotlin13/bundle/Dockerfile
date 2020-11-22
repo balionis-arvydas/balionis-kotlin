@@ -2,7 +2,7 @@ FROM openjdk:12-jdk-alpine
 
 WORKDIR /app
 
-COPY engine.jar ./myapp.jar
+COPY bundle.jar ./myapp.jar
 
 EXPOSE 8080
 

@@ -8,7 +8,7 @@ gradle clean test build
 
 # Test
 ```
-$ curl -X GET http://localhost:8180/engine/echo
+$ curl -X GET http://localhost:8180/bundle/echo
 Hello, Engine!
 $ curl -X GET http://localhost:8280/workers/echo
 Hello, Workers! 

@@ -45,3 +45,11 @@ services:
       - zeebe_elasticsearch_data:/usr/share/elasticsearch/data
     networks:
       - zeebe_network
+  myapp:
+    image: balionis-kotlin13-bundle:latest
+    ports:
+      - "8180:8080"
+    depends_on:
+      - zeebe
+    networks:
+      - zeebe_network
