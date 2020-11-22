@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_1yxs6xf" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Zeebe Modeler" exporterVersion="0.10.0">
+  <bpmn:process id="Process_1" name="Sample1" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_1">
+      <bpmn:incoming>Flow_03</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_01" sourceRef="StartEvent_1" targetRef="Activity_01" />
+    <bpmn:sequenceFlow id="Flow_02" sourceRef="Activity_01" targetRef="Activity_02" />
+    <bpmn:sequenceFlow id="Flow_03" sourceRef="Activity_02" targetRef="EndEvent_1" />
+    <bpmn:serviceTask id="Activity_01" name="EnterData">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="EnterDataService" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_01</bpmn:incoming>
+      <bpmn:outgoing>Flow_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_02" name="SaveData">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="SaveDataService" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_02</bpmn:incoming>
+      <bpmn:outgoing>Flow_03</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNEdge id="Flow_03_di" bpmnElement="Flow_03">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="582" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02_di" bpmnElement="Flow_02">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01_di" bpmnElement="Flow_01">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="582" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ax0udq_di" bpmnElement="Activity_01">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0n7i85d_di" bpmnElement="Activity_02">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

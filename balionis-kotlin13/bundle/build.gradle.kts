@@ -23,6 +23,8 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api")
 	testImplementation("com.ninja-squad:springmockk:1.1.3")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
+	implementation("io.zeebe:zeebe-client-java:0.24.1")
 }
 
 tasks.withType<Test> {

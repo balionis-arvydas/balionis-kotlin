@@ -59,3 +59,5 @@ services:
       - zeebe
     networks:
       - zeebe_network
+    environment:
+      - ZEEBE_BROKER=zeebe:26500
