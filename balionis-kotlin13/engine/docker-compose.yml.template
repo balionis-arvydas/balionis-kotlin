@@ -51,9 +51,12 @@ services:
       - ./application.operate.yaml:/usr/local/operate/config/application.yaml
     networks:
       - zeebe_network
+    restart: always
   myapp:
     image: balionis-kotlin13-engine:latest
     ports:
       - "8180:8080"
     depends_on:
       - zeebe
+    networks:
+      - zeebe_network
