@@ -1,4 +1,4 @@
-package com.balionis.kotlin13.engine
+package com.balionis.kotlin13.bundle
 
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 class MyControllerTest(@Autowired val mockMvc: MockMvc) {
     @Test
     fun `has engine`() {
-        mockMvc.perform(get("/engine/echo").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/bundle/echo").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk)
                 .andExpect(content().string("Hello, Engine!"))
     }

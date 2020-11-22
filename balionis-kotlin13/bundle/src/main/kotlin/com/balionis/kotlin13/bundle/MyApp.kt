@@ -1,4 +1,4 @@
-package com.balionis.kotlin13.engine
+package com.balionis.kotlin13.bundle
 
 import org.springframework.boot.Banner
 import org.springframework.boot.autoconfigure.SpringBootApplication

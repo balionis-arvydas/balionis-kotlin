@@ -1,4 +1,4 @@
-package com.balionis.kotlin13.engine
+package com.balionis.kotlin13.bundle
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

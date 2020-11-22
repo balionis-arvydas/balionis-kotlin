@@ -1,4 +1,4 @@
-package com.balionis.kotlin13.engine
+package com.balionis.kotlin13.bundle
 
 import mu.KotlinLogging
 import org.springframework.web.bind.annotation.*
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*
 private val logger = KotlinLogging.logger {}
 
 @RestController
-@RequestMapping("/engine")
+@RequestMapping("/bundle")
 class MyController {
 
     @GetMapping("/echo")

@@ -37,6 +37,6 @@ tasks.withType<KotlinCompile> {
 }
 
 docker {
-	name = rootProject.name + "-engine"
+	name = rootProject.name + "-bundle"
 	copySpec.from("build/libs")
 }

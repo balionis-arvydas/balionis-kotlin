@@ -1,5 +1,5 @@
 rootProject.name = "balionis-kotlin13"
 
 include("commons")
-include("engine")
+include("bundle")
 include("workers")
