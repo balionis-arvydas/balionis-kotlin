@@ -1,4 +1,9 @@
 version: "3"
+
+networks:
+  default:
+    external:
+      name: bundle_zeebe_network
 services:
   myapp:
     image: balionis-kotlin13-workers:latest
