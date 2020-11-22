@@ -11,5 +11,7 @@ gradle clean test build
 $ curl -X GET http://localhost:8180/engine/echo
 Hello, Engine!
 $ curl -X GET http://localhost:8280/workers/echo
-Hello, Workers!  
+Hello, Workers! 
+$ curl -X GET http://localhost:9200/_cluster/health
+{"cluster_name":"elasticsearch","status":"green","timed_out":false,"number_of_nodes":1,...
 ```
