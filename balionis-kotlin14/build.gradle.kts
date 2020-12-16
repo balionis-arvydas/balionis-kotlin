@@ -34,6 +34,8 @@ dependencies {
     implementation("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    implementation("io.github.microutils:kotlin-logging:1.11.5")
 }
 
 

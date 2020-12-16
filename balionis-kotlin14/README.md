@@ -3,10 +3,11 @@ It's a micronaut sandbox using https://micronaut.io/launch/ generator as baselin
 
 # Build
 ```
-gradle clean test build
+$ gradle clean test build
 ```
 
 # Test
 ```
-TODO
+$ curl -X GET http://localhost:8088/echo/World
+Hello, World!
 ```
