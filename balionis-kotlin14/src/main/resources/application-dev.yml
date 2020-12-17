@@ -1,0 +1,2 @@
+myapp:
+  message: "DEV: Hello from, {MY_NAME}!"

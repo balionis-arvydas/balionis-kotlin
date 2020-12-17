@@ -1,0 +1,2 @@
+myapp:
+  message: "TEST: Hello from, {MY_NAME}!"

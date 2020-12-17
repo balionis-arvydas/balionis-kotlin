@@ -22,6 +22,6 @@ class MyControllerTest {
     fun testHelloWorldResponse() {
         val rsp: String = client.toBlocking()
                 .retrieve("/echo/John")
-        assertEquals("Hello, John!", rsp)
+        assertEquals("TEST: Hello from, John!", rsp)
     }
 }
