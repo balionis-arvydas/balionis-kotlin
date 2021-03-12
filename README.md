@@ -26,10 +26,6 @@ This set of packages is meant to provide me with the prototype of build, test, p
 
 10. balionis-kotlin10      - camunda spring docker prototype using balionis-kotlin9 baseline.
 
-11. balionis-kotlin11      - activiti5 spring docker prototype using balionis-kotlin10 baseline.
-
-12. balionis-kotlin12      - activiti7 bundle docker prototype.
-
 13. balionis-kotlin13      - camunda cloud sandbox using balionis-kotlin9 as baseline.
 
 14. balionis-kotlin14      - micronaut sandbox using micronaut web generator baseline.
