@@ -1,9 +1,9 @@
 package com.balionis.kotlin15.common
 
-import kotlin.test.assertTrue
 import org.junit.Test
+import kotlin.test.assertTrue
 
-class AppTest {
+class ModelTest {
     @Test
     fun testMe() {
         assertTrue(true)

@@ -8,20 +8,16 @@ plugins {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
-    implementation("io.github.microutils:kotlin-logging:1.11.5")
-    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation(Libs.KOTLIN_LOGGING)
+    implementation(Libs.LOGBACK_CLASSIC)
 
     implementation(project(":common"))
 
-    implementation("com.squareup.moshi:moshi:1.9.3")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.2")
+    implementation(Libs.MOSHI)
+    implementation(Libs.JACKSON_DATABIND)
 
-    testImplementation("junit:junit:4.11")
+    testImplementation(Libs.JUNIT)
     testImplementation(kotlin("test-junit"))
-}
-
-tasks.withType<AbstractArchiveTask> {
-    archiveBaseName.set(rootProject.name + "-server")
 }
 
 application {
@@ -29,7 +25,6 @@ application {
 
     // FIXME: this does not work!
     applicationDistribution.exclude("**/logback*.xml")
-
 }
 
 tasks.withType<ShadowJar> {
