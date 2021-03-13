@@ -1,0 +1,15 @@
+version: '3'
+
+networks:
+  balionis:
+    name: balionis
+
+services:
+  service1:
+    image: balionis-kotlin15-service1:latest
+    ports:
+      - "8080:8080"
+    environment:
+      JAVA_OPTS: "-Dconfig.file=/app/config/application-local.conf"
+    volumes:
+      - ./src/main/docker/config:/app/config

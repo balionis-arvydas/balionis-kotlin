@@ -10,6 +10,7 @@ plugins {
     kotlin("jvm") version "1.4.10"
     kotlin("kapt") version "1.4.10"
 
+    id("at.phatbl.shellexec") version "1.5.1"
     id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
 }
 

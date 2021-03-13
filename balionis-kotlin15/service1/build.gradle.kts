@@ -1,3 +1,4 @@
+import at.phatbl.shellexec.ShellExec
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
@@ -29,9 +30,35 @@ application {
     applicationDistribution.exclude("**/logback*.xml")
 }
 
-tasks.withType<ShadowJar> {
-    mergeServiceFiles {
-        // FIXME: this does not work!
-        exclude("**/logback*.xml")
+tasks {
+    val dockerImage = extra["dockerImage"]
+
+    create<ShellExec>("dockerBuild") {
+        dependsOn("build")
+
+        description = "Build a service docker image"
+        group = "Docker"
+        command = "docker build -t $dockerImage:latest ."
+    }
+
+    create<ShellExec>("dockerComposeUp") {
+        dependsOn("dockerBuild")
+
+        description = "Start a service on local docker"
+        group = "Docker"
+        command = "docker-compose -f docker-compose.yml build && docker-compose -f docker-compose.yml up -d"
+    }
+
+    create<ShellExec>("dockerComposeDown") {
+        description = "Stop a service on local docker"
+        group = "Docker"
+        command = "docker-compose -f docker-compose.yml down"
+    }
+
+    withType<ShadowJar> {
+        mergeServiceFiles {
+            // FIXME: this does not work!
+            exclude("**/logback*.xml")
+        }
     }
 }

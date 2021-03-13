@@ -1,0 +1,31 @@
+version: '3'
+
+networks:
+  balionis:
+    name: balionis
+
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      - balionis
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9094:9094"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "INSIDE"
+      KAFKA_ADVERTISED_LISTENERS: "INSIDE://:9092,OUTSIDE://127.0.0.1:9094,DOCKER_INTERNAL://kafka:19092"
+      KAFKA_LISTENERS: "INSIDE://:9092,OUTSIDE://:9094,DOCKER_INTERNAL://kafka:19092"
+      KAFKA_LISTENERS_SECURITY_PROTOCOL_MAP: "INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT,DOCKER_INTERNAL:PLAINTEXT"
+      KAFKA_CREATE_TOPICS: "my-request:1:1,my-response:1:1"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - balionis
+    depends_on:
+      - zookeeper
