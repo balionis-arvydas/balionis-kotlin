@@ -16,6 +16,8 @@ dependencies {
     implementation(Libs.MOSHI)
     implementation(Libs.JACKSON_DATABIND)
 
+    implementation(Libs.CONFIG4K)
+
     testImplementation(Libs.JUNIT)
     testImplementation(kotlin("test-junit"))
 }

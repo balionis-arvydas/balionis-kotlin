@@ -8,15 +8,15 @@ class AppTest {
     fun testMe() {
         val req =
             """
-            {"payload":{"args":["arg1","arg2"]}}
+            {"payload":{"args":[]}}
             """.trimIndent()
 
         val expected =
             """
-            {"payload":{"message":"echo:arg1"}}
+            {"payload":{"message":"echo:8080"}}
             """.trimIndent()
 
-        val subject = App()
+        val subject = App(Configuration.load())
         val actual = subject.echo(req)
 
         assertEquals(expected, actual)

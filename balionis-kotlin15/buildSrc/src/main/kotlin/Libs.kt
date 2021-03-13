@@ -8,5 +8,6 @@ object Libs {
 
     const val JUNIT = "junit:junit:4.11"
 
+    const val CONFIG4K = "io.github.config4k:config4k:0.4.1"
 
 }
