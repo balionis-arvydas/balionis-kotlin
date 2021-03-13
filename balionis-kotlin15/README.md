@@ -12,3 +12,14 @@ gradle clean test build
 ```
 $ ./gradlew sevice1:dockerComposeUp" 
 ```
+
+# Coverage
+```
+$ ./gradlew sonarqube --info
+$ chrome http://localhost:9000
+username: admin
+password: admin 
+```
+
+You can generate token used "sonar.login" (see gradle.properties) 
+use http://localhost:9000/account/security/ "generate token".

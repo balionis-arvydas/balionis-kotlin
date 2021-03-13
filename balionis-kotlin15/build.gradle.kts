@@ -12,12 +12,20 @@ plugins {
 
     id("at.phatbl.shellexec") version "1.5.1"
     id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
+    id("jacoco")
+    id("org.sonarqube") version "3.1.1"
 }
 
 val kotlinProjects = setOf(
     "common",
     "service1"
 )
+
+sonarqube {
+    properties {
+        property("sonar.sourceEncoding", "UTF-8")
+    }
+}
 
 subprojects {
     val projectName = "${this.rootProject.name}-${this.project.name}"
@@ -28,10 +36,26 @@ subprojects {
             plugin("kotlin")
             plugin("kotlin-kapt")
             plugin("org.jlleitschuh.gradle.ktlint")
+            plugin("jacoco")
         }
 
         ktlint {
             enableExperimentalRules.set(true)
+        }
+
+        tasks.withType<Test> {
+            finalizedBy(tasks.jacocoTestReport)
+        }
+
+        jacoco {
+            toolVersion = "0.8.6"
+        }
+
+        tasks.jacocoTestReport {
+            reports {
+                xml.isEnabled = true
+                csv.isEnabled = false
+            }
         }
     }
 
