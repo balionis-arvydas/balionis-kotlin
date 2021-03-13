@@ -30,3 +30,5 @@ This set of packages is meant to provide me with the prototype of build, test, p
 
 14. balionis-kotlin14      - micronaut sandbox using micronaut web generator baseline.
 
+15. balionis-kotlin15      - docker compose sandbox using stack: http4k, kafka.
+
