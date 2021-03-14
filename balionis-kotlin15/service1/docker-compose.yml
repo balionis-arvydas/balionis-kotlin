@@ -8,8 +8,8 @@ services:
   service1:
     image: balionis-kotlin15-service1:latest
     ports:
-      - "8080:8080"
+      - "9090:9090"
     environment:
-      JAVA_OPTS: "-Dconfig.file=/app/config/application-local.conf"
+      JAVA_OPTS: "-Dconfig.file=/app/config/application-local.conf -Dlogback.configurationFile=/app/config/logback-local.xml"
     volumes:
       - ./src/main/docker/config:/app/config

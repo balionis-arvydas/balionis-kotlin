@@ -1,16 +1,11 @@
 package com.balionis.kotlin15.service1
 
-import com.balionis.kotlin15.common.MoshiExtensions.jsonAdapter
-import com.balionis.kotlin15.common.MyRequest
-import com.balionis.kotlin15.common.MyResponse
-import com.balionis.kotlin15.common.MyResponsePayload
 import mu.KotlinLogging
+import org.http4k.server.Jetty
+import org.http4k.server.asServer
 import kotlin.system.exitProcess
 
 private val logger = KotlinLogging.logger {}
-
-private val requestAdapter = MyRequest::class.java.jsonAdapter()
-private val responseAdapter = MyResponse::class.java.jsonAdapter()
 
 fun main(args: Array<String>) {
     logger.info { "main: args=${args.joinToString()}" }
@@ -32,24 +27,16 @@ fun main(args: Array<String>) {
 }
 
 class App(private val config: Configuration) : AutoCloseable {
+    private val server: AutoCloseable
 
-    fun echo(reqJson: String): String {
-        logger.debug { "echo: reqJson=$reqJson" }
-
-        val req = requestAdapter.fromJson(reqJson)
-
-        val arg1 = req?.payload?.args?.getOrElse(0) { "${config.application.port}" }
-
-        val res = MyResponse(MyResponsePayload("echo:$arg1"))
-
-        val resJson = responseAdapter.toJson(res)
-
-        logger.debug { "echo: resJson=$resJson" }
-
-        return resJson
+    init {
+        server = AppHandler().asServer(Jetty(config.application.port)).start()
     }
-
     override fun close() {
-        logger.debug { "close+" }
+        runCatching {
+            server.close()
+        }.onFailure {
+            logger.error(it) { "close: failed to close. ${it.message}" }
+        }
     }
 }

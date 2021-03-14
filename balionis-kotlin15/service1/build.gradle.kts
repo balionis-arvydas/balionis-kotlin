@@ -21,6 +21,10 @@ dependencies {
 
     testImplementation(Libs.JUNIT)
     testImplementation(kotlin("test-junit"))
+
+    implementation(Libs.HTTP4K_CORE)
+    implementation(Libs.HTTP4K_CLOUDNATIVE)
+    implementation(Libs.HTTP4K_SERVER_JETTY)
 }
 
 application {

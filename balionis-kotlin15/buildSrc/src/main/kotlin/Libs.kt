@@ -10,4 +10,7 @@ object Libs {
 
     const val CONFIG4K = "io.github.config4k:config4k:0.4.1"
 
+    const val HTTP4K_CORE = "org.http4k:http4k-core:3.244.0"
+    const val HTTP4K_CLOUDNATIVE = "org.http4k:http4k-cloudnative:3.244.0"
+    const val HTTP4K_SERVER_JETTY = "org.http4k:http4k-server-jetty:3.244.0"
 }

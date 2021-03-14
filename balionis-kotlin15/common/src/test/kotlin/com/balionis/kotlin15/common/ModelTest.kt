@@ -25,7 +25,7 @@ class ModelTest {
     @Test
     fun testResponse() {
         val expected =
-                """
+            """
             {"payload":{"message":"arg1"}}
             """.trimIndent()
 
