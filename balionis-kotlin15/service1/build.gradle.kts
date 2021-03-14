@@ -19,7 +19,11 @@ dependencies {
 
     implementation(Libs.CONFIG4K)
 
-    testImplementation(Libs.JUNIT)
+    testImplementation(Libs.KOTEST_RONNER_JUNIT5)
+    testImplementation(Libs.KOTEST_ASSERTIONS_CORE)
+    testImplementation(Libs.HTTP4K_CLIENT_OKHTTP)
+    testImplementation(Libs.HTTP4K_TESTING_HAMKREST)
+    testImplementation(Libs.HAMKREST)
     testImplementation(kotlin("test-junit"))
 
     implementation(Libs.HTTP4K_CORE)

@@ -1,15 +1,17 @@
 package com.balionis.kotlin15.common
 
 import com.balionis.kotlin15.common.MoshiExtensions.jsonAdapter
-import org.junit.Test
-import kotlin.test.assertEquals
+import io.kotest.core.spec.style.AnnotationSpec
+import io.kotest.matchers.collections.shouldContainAll
+import io.kotest.matchers.string.shouldContain
 
 private val requestAdapter = MyRequest::class.java.jsonAdapter()
 private val responseAdapter = MyResponse::class.java.jsonAdapter()
 
-class ModelTest {
+class ModelTest : AnnotationSpec() {
+
     @Test
-    fun testRequest() {
+    fun testRequestToJson() {
         val expected =
             """
             {"payload":{"args":["arg1","arg2"]}}
@@ -19,11 +21,25 @@ class ModelTest {
 
         val actual = requestAdapter.toJson(subject)
 
-        assertEquals(expected, actual)
+        actual shouldContain expected
     }
 
     @Test
-    fun testResponse() {
+    fun testRequestFromJson() {
+        val json =
+            """
+            {"payload":{"args":["arg1","arg2"]}}
+            """.trimIndent()
+
+        val expected = listOf("arg1", "arg2")
+
+        val request = requestAdapter.fromJson(json)
+
+        request!!.payload.args shouldContainAll expected
+    }
+
+    @Test
+    fun testResponseToJson() {
         val expected =
             """
             {"payload":{"message":"arg1"}}
@@ -33,6 +49,19 @@ class ModelTest {
 
         val actual = responseAdapter.toJson(subject)
 
-        assertEquals(expected, actual)
+        actual shouldContain expected
+    }
+
+    @Test
+    fun testResponseFromJson() {
+        val json =
+            """
+            {"payload":{"message":"arg1"}}
+            """.trimIndent()
+
+        val expected = "arg1"
+        val response = responseAdapter.fromJson(json)
+
+        response!!.payload.message shouldContain expected
     }
 }

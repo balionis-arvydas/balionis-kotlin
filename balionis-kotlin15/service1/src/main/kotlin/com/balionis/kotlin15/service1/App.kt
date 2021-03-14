@@ -12,6 +12,7 @@ fun main(args: Array<String>) {
 
     runCatching {
         App(Configuration.load()).let {
+            it.start()
             Runtime.getRuntime().addShutdownHook(
                 Thread {
                     logger.info { "main: closing" }
@@ -27,11 +28,13 @@ fun main(args: Array<String>) {
 }
 
 class App(private val config: Configuration) : AutoCloseable {
-    private val server: AutoCloseable
 
-    init {
-        server = AppHandler().asServer(Jetty(config.application.port)).start()
+    private val server = AppHandler().asServer(Jetty(config.application.port))
+
+    fun start() {
+        server.start()
     }
+
     override fun close() {
         runCatching {
             server.close()
